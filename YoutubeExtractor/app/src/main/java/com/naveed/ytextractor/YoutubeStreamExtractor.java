@@ -162,17 +162,21 @@ public class YoutubeStreamExtractor extends AsyncTask<String,Void,Void> {
 		try {
 			for (int x=0;x < rawMedia.length;x++) {
 				YTMedia media=rawMedia[x];
-				LogUtils.log(media.getCipher() != null ? media.getCipher(): "null cip");
+				LogUtils.log(media.getSignatureCipher() != null ? media.getSignatureCipher(): "null cip");
 
 				if (media.useCipher()) {
 					String tempUrl = "";
 					String decodedSig = "";
-					for (String partCipher:media.getCipher().split("&")) {
+					for (String partCipher:media.getSignatureCipher().split("&")) {
 
 
 
 						if (partCipher.startsWith("s=")) {
-							decodedSig = CipherManager.dechiperSig(URLDecoder.decode(partCipher.replace("s=", "")), response.getAssets().getJs());
+							try{
+								decodedSig = CipherManager.dechiperSig(URLDecoder.decode(partCipher.replace("s=", "")), response.getAssets().getJs());
+							}catch (Exception e){
+
+							}
 						}
 
 						if (partCipher.startsWith("url=")) {
@@ -248,8 +252,8 @@ public class YoutubeStreamExtractor extends AsyncTask<String,Void,Void> {
 	}
 
 	public interface ExtractorListner {
-		void onExtractionGoesWrong(ExtractorException e)
-		void onExtractionDone(List<YTMedia> adativeStream, List<YTMedia> muxedStream,List<YTSubtitles> subList, YoutubeMeta meta)
+		void onExtractionGoesWrong(ExtractorException e);
+		void onExtractionDone(List<YTMedia> adativeStream, List<YTMedia> muxedStream,List<YTSubtitles> subList, YoutubeMeta meta);
 	}
 
 }     
