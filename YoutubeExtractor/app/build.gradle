@@ -1,7 +1,6 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
 
-group='com.naveed.ytextractor'
 
 android {
     compileSdkVersion 29
