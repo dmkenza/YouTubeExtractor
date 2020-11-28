@@ -1,13 +1,15 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+//apply plugin: 'com.android.application'
+
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.0"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.naveed.ytextractor"
-        minSdkVersion 16
-        targetSdkVersion 21
+//        applicationId "com.naveed.ytextractor"
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
@@ -20,8 +22,11 @@ android {
 }
 
 dependencies {
-	compile 'com.google.code.gson:gson:2.8.5'
-	compile 'com.linsea:universalvideoview:1.1.0@aar'
-	compile  'org.mozilla:rhino:1.7.10'
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+//    implementation 'com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT'
+
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.linsea:universalvideoview:1.1.0@aar'
+    implementation  'org.mozilla:rhino:1.7.10'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

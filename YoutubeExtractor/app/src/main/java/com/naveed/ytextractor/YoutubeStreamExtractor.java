@@ -297,8 +297,8 @@ public class YoutubeStreamExtractor extends AsyncTask<String,Void,Void>
 
 	public interface ExtractorListner
 	{
-		void onExtractionGoesWrong(ExtractorException e)
-		void onExtractionDone(List<YTMedia> adativeStream, List<YTMedia> muxedStream, List<YTSubtitles> subList, YoutubeMeta meta)
+		void onExtractionGoesWrong(ExtractorException e);
+		void onExtractionDone(List<YTMedia> adativeStream, List<YTMedia> muxedStream, List<YTSubtitles> subList, YoutubeMeta meta);
 	}
 
 }     
